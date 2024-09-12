@@ -10,6 +10,7 @@ import {
   RedirectionButton,
   LargeInput,
 } from "../components";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 export default Signup = () => {
   const [email, setEmail] = useState("");
@@ -18,41 +19,46 @@ export default Signup = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   return (
-    <View style={styles.mainView}>
-      <Logo />
-      <Title title="Signup" />
-      <Input
-        placeholder="email"
-        secure="false"
-        state={email}
-        setState={setEmail}
-      />
-      <Input
-        placeholder="username"
-        secure="false"
-        state={username}
-        setState={setUsername}
-      />
-      <LargeInput
-        placeholder="Describe yourself in a few words..."
-        state={describe}
-        setState={setDescribe}
-      />
-      <Input
-        placeholder="password"
-        secure="true"
-        state={password}
-        setState={setPassword}
-      />
-      <Input
-        placeholder="confirm password"
-        secure="false"
-        state={confirmPassword}
-        setState={setConfirmPassword}
-      />
-      <Button name="signup" />
-      <RedirectionButton text="Already have an account ? Login !" page="/" />
-    </View>
+    <KeyboardAwareScrollView
+      style={{ flex: 1 }}
+      contentContainerStyle={{ flex: 1 }}
+    >
+      <View style={styles.mainView}>
+        <Logo />
+        <Title title="Signup" />
+        <Input
+          placeholder="email"
+          secure="false"
+          state={email}
+          setState={setEmail}
+        />
+        <Input
+          placeholder="username"
+          secure="false"
+          state={username}
+          setState={setUsername}
+        />
+        <LargeInput
+          placeholder="Describe yourself in a few words..."
+          state={describe}
+          setState={setDescribe}
+        />
+        <Input
+          placeholder="password"
+          secure="true"
+          state={password}
+          setState={setPassword}
+        />
+        <Input
+          placeholder="confirm password"
+          secure="false"
+          state={confirmPassword}
+          setState={setConfirmPassword}
+        />
+        <Button name="signup" />
+        <RedirectionButton text="Already have an account ? Login !" page="/" />
+      </View>
+    </KeyboardAwareScrollView>
   );
 };
 

@@ -1,6 +1,6 @@
 import { StyleSheet, TextInput } from "react-native";
 
-export const LargeInput = (placeholder, state, setState) => {
+export const LargeInput = ({ placeholder, state, setState }) => {
   return (
     <TextInput
       style={styles.textInput}
@@ -22,5 +22,6 @@ const styles = StyleSheet.create({
     borderColor: "#FFBAC0",
     borderWidth: 2,
     width: "80%",
+    height: 100,
   },
 });
