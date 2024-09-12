@@ -1,66 +1,68 @@
-import { View, useWindowDimensions, StyleSheet, Platform } from "react-native";
-import { useState } from "react";
+import { View, Text, StyleSheet, Platform } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import Constants from "expo-constants";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import axios from "axios";
 
-import { Logo, Input, Button, Title } from "../components/index";
+import {
+  Logo,
+  Title,
+  Input,
+  Button,
+  RedirectionButton,
+} from "../components/index";
+import { useState } from "react";
 
-export default function Signin() {
-  const styles = useStyles();
+export default Signin = () => {
+  //states
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async () => {
-    /* console.log("submited"); // ok */
     try {
       const response = await axios.post(
         "https://lereacteur-bootcamp-api.herokuapp.com/api/airbnb/user/log_in",
-        {
-          email: email,
-          password: password,
-        }
+        { email: email, password: password }
       );
-      console.log(email);
-      console.log(password);
-
       console.log(response.data);
-      // setData ...
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <View style={styles.container}>
-      <Logo />
-      <Title title="Sign in" />
-      <Input
-        placeholder={"email"}
-        state={email}
-        setState={setEmail}
-        secure={false}
-      />
-      <Input
-        placeholder={"password"}
-        state={password}
-        setState={setPassword}
-        secure={true}
-      />
-      <Button text="Sign in" submit={handleSubmit} />
-    </View>
+    <KeyboardAwareScrollView
+      style={{ flex: 1 }}
+      contentContainerStyle={{ flex: 1 }}
+    >
+      <View style={styles.mainView}>
+        <Logo />
+        <Title title="Signin" />
+        <Input
+          placeholder="email"
+          secure="false"
+          state={email}
+          useState={setEmail}
+        />
+        <Input
+          placeholder="password"
+          secure="true"
+          state={password}
+          setState={setPassword}
+        />
+        <Button name="Signin" onPressFunc={handleSubmit} />
+        <RedirectionButton text="No account ? Register" page={"/signup"} />
+      </View>
+    </KeyboardAwareScrollView>
   );
-}
-
-const useStyles = () => {
-  const { height, width } = useWindowDimensions;
-
-  const styles = StyleSheet.create({
-    container: {
-      marginTop: Platform.OS === "ios" ? 0 : Constants.statusBarHeight,
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: "white",
-    },
-  });
-  return styles;
 };
+
+const styles = StyleSheet.create({
+  mainView: {
+    marginTop: Platform.OS === "ios" ? 0 : Constants.statusBarHeight,
+    backgroundColor: "white",
+    flex: 1,
+    justifyContent: "space-around",
+    alignItems: "center",
+  },
+});

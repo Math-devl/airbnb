@@ -1,19 +1,9 @@
-import { View, StyleSheet, Text } from "react-native";
+import { Text, StyleSheet } from "react-native";
 
 export const Title = ({ title }) => {
-  return (
-    <View style={styles.viewTitle}>
-      <Text style={styles.text}>{title}</Text>
-    </View>
-  );
+  return <Text style={styles.mainTitle}>{title}</Text>;
 };
+
 const styles = StyleSheet.create({
-  text: {
-    color: "rgb(174, 174, 174)",
-    fontWeight: "600",
-    fontSize: 24,
-  },
-  viewTitle: {
-    paddingBottom: 100,
-  },
+  mainTitle: { color: "#717171", fontWeight: "bold", fontSize: 24 },
 });

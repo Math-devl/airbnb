@@ -1,16 +1,13 @@
 import { StyleSheet, TextInput } from "react-native";
 
-export const Input = ({ placeholder, secure, state, setState }) => {
+export const LargeInput = (placeholder, lines, length) => {
   return (
     <TextInput
       style={styles.textInput}
       placeholder={placeholder}
-      secureTextEntry={secure}
-      autoCapitalize="none"
-      value={state}
-      onChangeText={(text) => {
-        setState(text);
-      }}
+      multiline
+      numberOfLines={lines}
+      maxLength={length}
     />
   );
 };

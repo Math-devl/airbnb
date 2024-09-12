@@ -1,20 +1,18 @@
-import { View, Image, StyleSheet } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
+
+import logo from "../assets/logo.png";
 
 export const Logo = () => {
   return (
     <View>
-      <Image
-        source={require("../assets/logo.png")}
-        resizeMode="contain"
-        style={styles.mainLogo}
-      />
+      <Image source={logo} resizeMode="contain" style={styles.mainLogo} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   mainLogo: {
-    height: 100,
-    width: 100,
+    height: 150,
+    width: 150,
   },
 });
