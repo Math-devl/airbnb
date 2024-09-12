@@ -1,13 +1,17 @@
 import { StyleSheet, TextInput } from "react-native";
 
-export const LargeInput = (placeholder, lines, length) => {
+export const LargeInput = (placeholder, state, setState) => {
   return (
     <TextInput
       style={styles.textInput}
       placeholder={placeholder}
       multiline
-      numberOfLines={lines}
-      maxLength={length}
+      numberOfLines={10}
+      maxLength={250}
+      value={state}
+      onChangeText={(text) => {
+        setState(text);
+      }}
     />
   );
 };
@@ -15,8 +19,8 @@ export const LargeInput = (placeholder, lines, length) => {
 const styles = StyleSheet.create({
   textInput: {
     height: 35,
-    borderBottomColor: "#FFBAC0",
-    borderBottomWidth: 2,
+    borderColor: "#FFBAC0",
+    borderWidth: 2,
     width: "80%",
   },
 });

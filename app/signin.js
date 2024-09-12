@@ -42,7 +42,7 @@ export default Signin = () => {
           placeholder="email"
           secure="false"
           state={email}
-          useState={setEmail}
+          setState={setEmail}
         />
         <Input
           placeholder="password"

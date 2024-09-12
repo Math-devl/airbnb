@@ -14,6 +14,7 @@ import {
 export default Signup = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
+  const [describe, setDescribe] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   return (
@@ -24,31 +25,33 @@ export default Signup = () => {
         placeholder="email"
         secure="false"
         state={email}
-        useState={setEmail}
+        setState={setEmail}
       />
       <Input
         placeholder="username"
         secure="false"
         state={username}
-        useState={setUsername}
+        setState={setUsername}
       />
-      {/*       <LargeInput
+      <LargeInput
         placeholder="Describe yourself in a few words..."
-        lines="5"
-        length="100"
-      /> */}
+        state={describe}
+        setState={setDescribe}
+      />
       <Input
         placeholder="password"
         secure="true"
         state={password}
-        useState={setPassword}
+        setState={setPassword}
       />
       <Input
-        placeholder="username"
+        placeholder="confirm password"
         secure="false"
         state={confirmPassword}
-        useState={setConfirmPassword}
+        setState={setConfirmPassword}
       />
+      <Button name="signup" />
+      <RedirectionButton text="Already have an account ? Login !" page="/" />
     </View>
   );
 };
